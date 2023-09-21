@@ -1,0 +1,42 @@
+int matrixConvolutionNew(cv::Mat &src, cv::Mat &dst, const std::vector<std::vector<double>> &kernel) {
+    int kernelRows = kernel.size();
+    int kernelCols = kernel[0].size();
+    int rowCenter = kernelRows / 2;
+    int colCenter = kernelCols / 2;
+
+    for (int row = 0; row < src.rows; row++) {
+        cv::Vec3b *rowPointerDst = dst.ptr<cv::Vec3b>(row);
+        
+        for (int col = 0; col < src.cols; col++) {
+            for (int channel = 0; channel < 3; channel++) {
+                double sum = 0;
+
+                // Calculate the starting positions
+                int currentSrcRow = row - rowCenter;
+                int currentSrcCol = col - colCenter;
+
+                // Pointer to the current pixel in src
+                cv::Vec3b *srcPixel = src.ptr<cv::Vec3b>(currentSrcRow) + currentSrcCol;
+
+                // Iterate through the kernel
+                for (int kernalRow = 0; kernalRow < kernelRows; kernalRow++) {
+                    for (int kernalCol = 0; kernalCol < kernelCols; kernalCol++) {
+                        int valFromSrc = srcPixel->val[channel];
+                        double valFromKernel = kernel[kernalRow][kernalCol];
+                        sum += valFromSrc * valFromKernel;
+
+                        // Move the srcPixel pointer to the right
+                        srcPixel++;
+                    }
+
+                    // Move the srcPixel pointer down and to the left
+                    srcPixel = src.ptr<cv::Vec3b>(currentSrcRow + kernalRow + 1) + currentSrcCol;
+                }
+
+                rowPointerDst[col][channel] = formatRGBValue(sum);
+            }
+        }
+    }
+
+    return 0;
+}

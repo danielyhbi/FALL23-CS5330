@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/Users/danielbi/git-repo/FALL23-CS5330/project-1/build",
+  "command": "/usr/bin/clang++  -I/usr/local/include/opencv4 -I/Users/danielbi/git-repo/FALL23-CS5330/project-1/../include -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -o CMakeFiles/project1-danielbi-imgDisplay.dir/imgDisplay.cpp.o -c /Users/danielbi/git-repo/FALL23-CS5330/project-1/imgDisplay.cpp",
+  "file": "/Users/danielbi/git-repo/FALL23-CS5330/project-1/imgDisplay.cpp",
+  "output": "CMakeFiles/project1-danielbi-imgDisplay.dir/imgDisplay.cpp.o"
+},
+{
+  "directory": "/Users/danielbi/git-repo/FALL23-CS5330/project-1/build",
+  "command": "/usr/bin/clang++  -I/usr/local/include/opencv4 -I/Users/danielbi/git-repo/FALL23-CS5330/project-1/../include -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -o CMakeFiles/project1-danielbi-imgDisplay.dir/filters.cpp.o -c /Users/danielbi/git-repo/FALL23-CS5330/project-1/filters.cpp",
+  "file": "/Users/danielbi/git-repo/FALL23-CS5330/project-1/filters.cpp",
+  "output": "CMakeFiles/project1-danielbi-imgDisplay.dir/filters.cpp.o"
+},
+{
+  "directory": "/Users/danielbi/git-repo/FALL23-CS5330/project-1/build",
+  "command": "/usr/bin/clang++  -I/usr/local/include/opencv4 -I/Users/danielbi/git-repo/FALL23-CS5330/project-1/../include -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -o CMakeFiles/project1-danielbi-vidDisplay.dir/vidDisplay.cpp.o -c /Users/danielbi/git-repo/FALL23-CS5330/project-1/vidDisplay.cpp",
+  "file": "/Users/danielbi/git-repo/FALL23-CS5330/project-1/vidDisplay.cpp",
+  "output": "CMakeFiles/project1-danielbi-vidDisplay.dir/vidDisplay.cpp.o"
+},
+{
+  "directory": "/Users/danielbi/git-repo/FALL23-CS5330/project-1/build",
+  "command": "/usr/bin/clang++  -I/usr/local/include/opencv4 -I/Users/danielbi/git-repo/FALL23-CS5330/project-1/../include -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -o CMakeFiles/project1-danielbi-vidDisplay.dir/filters.cpp.o -c /Users/danielbi/git-repo/FALL23-CS5330/project-1/filters.cpp",
+  "file": "/Users/danielbi/git-repo/FALL23-CS5330/project-1/filters.cpp",
+  "output": "CMakeFiles/project1-danielbi-vidDisplay.dir/filters.cpp.o"
+}
+]
