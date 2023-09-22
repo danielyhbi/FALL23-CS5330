@@ -5,7 +5,11 @@ CS5330 - Fall 2023
 9/22/2023
 
 ## Google drive link
-https://drive.google.com/file/d/1hJY4J1gps0mwpRx1cOvYfZLUF4nj5GCD/view?usp=sharing
+- Images
+   - https://drive.google.com/file/d/1hJY4J1gps0mwpRx1cOvYfZLUF4nj5GCD/view?usp=sharing
+- Binary
+   - 123
+- CMake + makefile
 
 ## System environment
 - OS: Mac OS Ventura 13.5.2

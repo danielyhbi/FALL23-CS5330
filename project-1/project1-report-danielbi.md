@@ -32,7 +32,7 @@ By pressing keys (mapping shown above), user can toggle on/off for filters in th
 > No required image needed.
 
 ### 3 - Display greyscale live video
-![vidDisplay Greyscale w OpenCV](/assets/report/3_video_greyscale.gif)
+![vidDisplay Greyscale w OpenCV](assets/report/3_video_greyscale.gif)
 > By toggling 'g'. The feed switched to the greyscale filter by openCV (`cv::cvtColor(frame, greyFrame, cv::COLOR_BGR2GRAY);`)
 
 According to opencv's website<sup>[1]</sup>. RGB/BGR <-> GRAY transform each channel through pipeline where (conform with  `rec601 luma` what is commonly used standard color TV system<sup>[2]</sup>):
@@ -41,15 +41,15 @@ $$ Y = 0.299 * R + 0.587 * G + 0.114 * B $$
 In the end, each channel (R, G, B) are applied with the same intensity for a greyscale image.
 
 ### 4 - Display alternative greyscale live video
-![vidDisplay Greyscale 709](/assets/report/4_video_greyscale709.gif)
+![vidDisplay Greyscale 709](assets/report/4_video_greyscale709.gif)
 > Although it looks similar to the image from section 3, a slightly different filter is used, where:
 $$ Y = 0.2126 * R + 0.7152 * G + 0.0722 * B $$
 
 This luma coding abides to the ITU-R BT.709 standard used for HDTV<sup>[2]</sup>, which emphasis more on the green color.
 
 ### 5 - Implement a 5x5 Gaussian filter as separable 1x5 filters
-![vidDisplay Gaussian filter before](/assets/report/5_gaussblur_before.png)
-![vidDisplay Gaussian filter](/assets/report/5_gaussblur_after.png)
+![vidDisplay Gaussian filter before](assets/report/5_gaussblur_before.png)
+![vidDisplay Gaussian filter](assets/report/5_gaussblur_after.png)
 > The first image is before the blur, the second image is after the blur. I included the photos instead because gif loses the fidelity of image, which would be hard to distinguish the blur filter.
 
 The 5x5 gauss filter worked great on softening the edges around the fonts.
@@ -70,10 +70,10 @@ MatrixConv(temp, dst, G_pass2); // final output
 Note each kernel is normalized to 1. For detail convolution steps, and gaussian filter processing. Please refer to function `matrixConvolution8bit` and `blur5x5` in the `filters.cpp` file.
 
 ### 6 - Implement a 3x3 Sobel X and 3x3 Sobel Y filter as separable 1x3 filters
-> No required image needed. See `/assets/report` for all images.
+> No required image needed. See `assets/report` for all images.
 
 ### 7 - Implement a function that generates a gradient magnitude image from the X and Y Sobel images
-![vidDisplay sobel X+Y](/assets/report/7_edge_detect_both.gif)
+![vidDisplay sobel X+Y](assets/report/7_edge_detect_both.gif)
 > The gif above shows sobel edge detection in a live video feed
 
 $$Sobel_{x} = \begin{bmatrix} 1& 0& -1\\ 2& 0& -2 \\ 1& 0& -1\end{bmatrix} Sobel_{x} = \begin{bmatrix} 1& 2& 1\\ 0& 0& 0 \\ -1& -2& -1\end{bmatrix}$$
@@ -93,8 +93,8 @@ The final step is to combine the edge detection result from x and y direction. W
 To account for the negative value during the convolution, 16bit image coding is utilized (`CV_16SC3` and `Vec3s`). For detail convolution steps, and gaussian filter processing. Please refer to function `matrixConvolution16bit` and `sobel3X3` in the `filters.cpp` file.
 
 ### 8 - Implement a function that blurs and quantizes a color image
-![vidDisplay blur + quantize before](/assets/report/8_blurQuantize_before.png)
-![vidDisplay blur + quantize](/assets/report/8_blurQuantize_after.png)
+![vidDisplay blur + quantize before](assets/report/8_blurQuantize_before.png)
+![vidDisplay blur + quantize](assets/report/8_blurQuantize_after.png)
 > The first image is before, the second image is after. I included the photos instead because gif loses the fidelity of image, which would be hard to distinguish the quartize filter.
 
 This is quite a straightforward task. You use the blur filter that you built, and follow the homework instruction to distinguist each RGB value into a set amount of bucket. For this filer, I used the value of `15`, which indicates there are only 15 sets of RGB values in that image.
@@ -102,7 +102,7 @@ This is quite a straightforward task. You use the blur filter that you built, an
 For detail convolution steps, and gaussian filter processing. Please refer to function `matrixConvolution8bit` and `blurQuantize` in the `filters.cpp` file.
 
 ### 9 - Implement a live video cartoonization function using the gradient magnitude and blur/quantize filters
-![vidDisplay cartoon](/assets/report/9_cartoon_video.gif)
+![vidDisplay cartoon](assets/report/9_cartoon_video.gif)
 > The gif above shows the cartoon filter in a live video feed
 
 Granted this is quite a primitive take on the cartoon filter. For the scope of this homework, the process is listed below:
@@ -115,8 +115,8 @@ One of the slightly tricky part is to overlay the edges (black as an inked pen) 
 For detail convolution steps, and gaussian filter processing. Please refer to function `cartoon` in the `filters.cpp` file.
 
 ### 10 - Pick another effect to implement on your video
-![vidDisplay sharpen before](/assets/report/10_shapren_before.png)
-![vidDisplay sharpen](/assets/report/10_sharpen_after.png)
+![vidDisplay sharpen before](assets/report/10_shapren_before.png)
+![vidDisplay sharpen](assets/report/10_sharpen_after.png)
 > The first image is before, the second image is after. I included the photos instead because gif loses the fidelity of image, which would be hard to distinguish the sharpen filter.
 
 I picked the sharpen filter. It utilizes the same process as the matrix convolution, where the kernel is:
@@ -140,7 +140,7 @@ Sepia filter requires matrix multiplication. In general, any color transformatio
 
 $$Sobel_{x} = \begin{bmatrix} 0.393& 0.769& 0.189\\ 0.349& 0.686& 0.168 \\ 0.272& 0.534& 0.131\end{bmatrix}$$
 
-![imgDisplay Greyscale w OpenCV](/assets/report/ex1_sepia.gif)
+![imgDisplay Greyscale w OpenCV](assets/report/ex1_sepia.gif)
 > The gif above shows the sepia filter in a live video feed
 
 For detail convolution steps, and gaussian filter processing. Please refer to function `matrixMultiplication`, `sepia` in the `filters.cpp` file.
@@ -151,27 +151,27 @@ Naturally I thought about refactoring the code so all filters work in the `imgDi
 
 I selected an image of my *second* favorite basketball player on the Portland Trailblazer team, Jeraimi Grant, as demonstration.
 
-![imgDisplay Greyscale w OpenCV](/assets/report/extensions/1_og.png)
+![imgDisplay Greyscale w OpenCV](assets/report/extensions/1_og.png)
 
-![imgDisplay Greyscale w OpenCV](/assets/report/3_img_greyscale.gif)
+![imgDisplay Greyscale w OpenCV](assets/report/3_img_greyscale.gif)
 > gif of applying greyscale filter in action. His beautiful smile is still there despite the lack of RBGs
 
-![imgDisplay ex blur w OpenCV](/assets/report/extensions/2_blur.png)
+![imgDisplay ex blur w OpenCV](assets/report/extensions/2_blur.png)
 > A blur filter applied to the image. He is so sharp that the bluring filter barely did anything, just barely tho.. (my filter still worked)
 
-![imgDisplay ex Edge detection ](/assets/report/extensions/3_edgeDetect.png)
+![imgDisplay ex Edge detection ](assets/report/extensions/3_edgeDetect.png)
 > Probably the coolest filter effect I've seen so far, the edges are quite prominent since the original image has quite simple colors. The sobel detection filter was almost as perfect as his shooting (perimeter and in the paint).
 
-![imgDisplay sepia w OpenCV](/assets/report/extensions/4_sepia.png)
+![imgDisplay sepia w OpenCV](assets/report/extensions/4_sepia.png)
 > This is the sepia filter. Looks like Jerami is in the past but he is the future of the Blazers.
 
-![imgDisplay cartoon w OpenCV](/assets/report/extensions/6_cartoon.png)
+![imgDisplay cartoon w OpenCV](assets/report/extensions/6_cartoon.png)
 > This is the cartoon filter. It is almost giving me the Coby White vibe, Coby wishes tho.
 
-![imgDisplay blur+quantize w OpenCV](/assets/report/extensions/7-blurquantize.png)
+![imgDisplay blur+quantize w OpenCV](assets/report/extensions/7-blurquantize.png)
 > This is the just the blur+Quantize filter. It didn't do much because the original image has simple distinct colors. However, look into the background and you can tell how many light sources it has. (Answer: not 2 but 3, since Jerami himself is a source of light..)
 
-![imgDisplay shapren w OpenCV](/assets/report/extensions/8-sharpen.png)
+![imgDisplay shapren w OpenCV](assets/report/extensions/8-sharpen.png)
 > This is the the shapren filter. That's how the trailblazer fans would like--Jerami Grant, extra sharp ;)
 
 ### 3 - performance improvements
@@ -180,17 +180,17 @@ After me almost having too much fun on the image filters, and (probably) getting
 
 My Macbook still runs on intel but it is not a fossil, however any matrix convolution filter runs quite slow on my machine.. See examples below:
 
-![slow calcualtions](/assets/report/extensions/ex3_slow_edge.gif)
+![slow calcualtions](assets/report/extensions/ex3_slow_edge.gif)
 > The frame per second (FPS) goes from ~75 (no filter) all the way down to ~1.5FPS after edge detection is applied. It is even worse on the cartoon effect
 
-![slow calcualtions](/assets/report/extensions/ex3_slow_cartoon.gif)
+![slow calcualtions](assets/report/extensions/ex3_slow_cartoon.gif)
 > The FPS dropped below 1 FPS.. This is definitely unacceptable even to my standard!
 
 After learning that everything here is executed single threaded and with a single process, I decided to convert my convolution funtion to a more parallel-friendly code. Using C++'s asynchronous operations capability.
 
 Mainly, I figured it would be efficient if the process can `divide and conquer`. For now, the frame (cv::Mat) is divided into (4) parts, where it is equally divided by the col and row (see figure below):
 
-![slow calcualtions](/assets/report/extensions/ex_rect.jpeg)
+![slow calcualtions](assets/report/extensions/ex_rect.jpeg)
 
 Code-wise, I utilized the `future` library. Each `future` is an async task which is defined by a lambda. Pseduo-code below:
 ```c++
@@ -211,10 +211,10 @@ With a modified function to perform matrix convolution, essentially it can start
 
 The result is almost un-surprising. the performance (FPS) increased by 4 times for each convolution tasks, shown below. 
 
-![slow calcualtions](/assets/report/extensions/ex3_fast_edge.gif)
+![slow calcualtions](assets/report/extensions/ex3_fast_edge.gif)
 > The frame per second (FPS) increased to 4.5 FPS, which is about 4x more than the non-concurrent case
 
-![slow calcualtions](/assets/report/extensions/ex3_fast_cartoon.gif)
+![slow calcualtions](assets/report/extensions/ex3_fast_cartoon.gif)
 > The frame per second (FPS) increased to 2.8 FPS, which is about 4x more than the non-concurrent case
 
 I'm just happy that my laptop's fan no longer sounds exploding, and my program is way more responsive than before. If I had more time, I'd look into how to make it even faster.
