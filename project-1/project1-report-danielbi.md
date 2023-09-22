@@ -56,8 +56,8 @@ The 5x5 gauss filter worked great on softening the edges around the fonts.
 
 In addition, for faster convolution processing, (2) 1x5 kernels are utilized as separable filters. Where the original 5x5 gaussian filter is separated into (2) 1x5 matrix (one vertical, one horizontal) as shown below.
 
-$$G_{pass1} = \begin{bmatrix} 0.1& 0.2& 0.4& 0.2& 0.1\end{bmatrix}$$
-$$G_{pass2} = \begin{bmatrix} 0.1\\ 0.2\\ 0.4\\ 0.2\\ 0.1\end{bmatrix}$$
+$$ G_{pass1} = \begin{bmatrix} 0.1& 0.2& 0.4& 0.2& 0.1\end{bmatrix} $$
+$$ G_{pass2} = \begin{bmatrix} 0.1\\ 0.2\\ 0.4\\ 0.2\\ 0.1\end{bmatrix} $$
 
 In order to properly perserve the intemediate steps between each convolutions, a temporary `Mat` is created. Psudocode is shown below.
 ```c++
@@ -76,7 +76,8 @@ Note each kernel is normalized to 1. For detail convolution steps, and gaussian 
 ![vidDisplay sobel X+Y](assets/report/7_edge_detect_both.gif)
 > The gif above shows sobel edge detection in a live video feed
 
-$$Sobel_{x} = \begin{bmatrix} 1& 0& -1\\ 2& 0& -2 \\ 1& 0& -1\end{bmatrix} Sobel_{x} = \begin{bmatrix} 1& 2& 1\\ 0& 0& 0 \\ -1& -2& -1\end{bmatrix}$$
+$$ Sobel_{x} = \begin{bmatrix} 1& 0& -1\\ 2& 0& -2 \\ 1& 0& -1\end{bmatrix} $$ 
+$$ Sobel_{x} = \begin{bmatrix} 1& 2& 1\\ 0& 0& 0 \\ -1& -2& -1\end{bmatrix} $$
 
 Similiar processing is utilized as the gaussian blur filter. However some difference remains:
 - Due to the nature of sobel matrix, edge detection for each direction (X, Y) has to be processed separately.
@@ -84,9 +85,9 @@ Similiar processing is utilized as the gaussian blur filter. However some differ
 
 Once the kernel is properly separated (shown below), same process is done as the gauss blur. It doesn't matter which separated kernel is applied first due to math property.
 
-$$Sobel_{xv} = \begin{bmatrix} 0.25\\ 0.5 \\ 0.25\end{bmatrix} Sobel_{xh} = \begin{bmatrix} 1& 0& -1\end{bmatrix}$$
+$$Sobel_{xv} = \begin{bmatrix} 0.25 \\\ 0.5 \\\ 0.25\end{bmatrix} Sobel_{xh} = \begin{bmatrix} 1& 0& -1\end{bmatrix}$$
 
-$$Sobel_{yv} = \begin{bmatrix} 1\\ 0 \\ -1\end{bmatrix} Sobel_{yh} = \begin{bmatrix} 0.25& 0.5& 0.25\end{bmatrix}$$
+$$Sobel_{yv} = \begin{bmatrix} 1 \\\ 0 \\\ -1\end{bmatrix} Sobel_{yh} = \begin{bmatrix} 0.25& 0.5& 0.25\end{bmatrix}$$
 
 The final step is to combine the edge detection result from x and y direction. Which is loop each pixel and perform an Euclidean distance calculation to get the gradient magnitidue.
 
@@ -120,11 +121,7 @@ For detail convolution steps, and gaussian filter processing. Please refer to fu
 > The first image is before, the second image is after. I included the photos instead because gif loses the fidelity of image, which would be hard to distinguish the sharpen filter.
 
 I picked the sharpen filter. It utilizes the same process as the matrix convolution, where the kernel is:
-$$Shapren = \begin{bmatrix} -.125& -.125& -.125& -.125& -.125\\
-                          -.125& .25& .25& .25& -.125\\
-                          -.125& .25& 1.0& .25& -.125\\
-                          -.125& .25& .25& .25& -.125\\
-                          -.125& -.125& -.125& -.125& -.125\end{bmatrix}$$
+$$Shapren = \begin{bmatrix} -.125& -.125& -.125& -.125& -.125 \\\ -.125& .25& .25& .25& -.125 \\\ -.125& .25& 1.0& .25& -.125\\\-.125& .25& .25& .25& -.125\\\-.125& -.125& -.125& -.125& -.125\end{bmatrix}$$
 
 For detail convolution steps, and gaussian filter processing. Please refer to function `shapren` in the `filters.cpp` file.
 
