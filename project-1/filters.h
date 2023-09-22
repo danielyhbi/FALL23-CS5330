@@ -2,13 +2,13 @@
 
 #include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
-#include <array>
-#include <math.h>
-#include <cmath>
-#include <filesystem>
+// #include <array>
+// #include <math.h>
+// #include <cmath>
+// #include <filesystem>
 #include <iostream>
 #include <future>
-#include <chrono>
+// #include <chrono>
 using namespace std;
 using namespace cv;
 

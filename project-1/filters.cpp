@@ -6,7 +6,6 @@
 #include <filesystem>
 #include <iostream>
 #include <future>
-#include <chrono>
 #include "filterMatrices.h"
 using namespace std;
 using namespace cv;

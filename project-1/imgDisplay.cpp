@@ -22,9 +22,15 @@ int main()
 {
     // can probably implement a file picker to select an image to display
     // can notify user if they want ot quit but kept on pressing the wrong keys
-    std::string saveFilePath = "/Users/danielbi/git-repo-no-sync/cs5330-fall23/project-1/out/";
-    std::string image_path = "/Users/danielbi/git-repo-no-sync/cs5330-fall23/project-1/assets/jgrant.png";
+    // std::string saveFilePath = "/Users/danielbi/git-repo/FALL23-CS5330/project-1/ut/";
+    // std::string image_path = "/Users/danielbi/git-repo/FALL23-CS5330/project-1/assets/jgrant.png";
     int saveCount = 1;
+
+    string currentPath = std::__fs::filesystem::current_path();
+    printf("current path %s\n", currentPath.c_str());
+
+    std::string saveFilePath = currentPath + "/out/";
+    std::string image_path = currentPath + "/assets/jgrant.png";
 
     Mat img = imread(image_path, IMREAD_COLOR);
     Mat imgModify = imread(image_path, IMREAD_COLOR);
@@ -57,6 +63,11 @@ int main()
             cv::cvtColor(img, imgModify, cv::COLOR_BGR2GRAY);
             printf("toggled grey scale\n");
         }
+        if (key == 'i')
+        {
+            blurQuantize(img, imgModify, 20);
+            printf("toggled blur+quantize\n");
+        }
         if (key == 'b')
         {
             blur5x5(img, imgModify);
@@ -69,7 +80,7 @@ int main()
         }
         if (key == 'c')
         {
-            cartoon(img, imgModify, 15, 20);
+            cartoon(img, imgModify, 10, 40);
             printf("toggled cartoon\n");
         }
         if (key == 'a')

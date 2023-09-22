@@ -28,7 +28,12 @@ vector<int> getImageCompressionParam()
 int main(int argc, char *argv[])
 {
     cv::VideoCapture *capdev;
-    string saveFilePath = "/Users/danielbi/git-repo-no-sync/cs5330-fall23/project-1/out/";
+    //string saveFilePath = "/Users/danielbi/git-repo/FALL23-CS5330/project-1/out/";
+
+    string currentPath = std::__fs::filesystem::current_path();
+    printf("current path %s\n", currentPath.c_str());
+    std::string saveFilePath = currentPath + "/out/";
+
     int saveCount = 1;
     bool isGreyScale = false;
     bool isGreyScale709 = false;
@@ -133,7 +138,7 @@ int main(int argc, char *argv[])
 
         // very roughly measure fps
         double fps = cv::getTickFrequency() / (cv::getTickCount() - start);
-        printf("FPS: %f\n", fps);
+        // printf("FPS: %f\n", fps);
 
         // see if there is a waiting keystroke
         // ref: https://stackoverflow.com/questions/22148826/measure-opencv-fps
