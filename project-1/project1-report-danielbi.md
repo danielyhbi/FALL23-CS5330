@@ -44,6 +44,7 @@ In the end, each channel (R, G, B) are applied with the same intensity for a gre
 ### 4 - Display alternative greyscale live video
 ![vidDisplay Greyscale 709](assets/report/4_video_greyscale709.gif)
 > Although it looks similar to the image from section 3, a slightly different filter is used, where:
+
 $$ Y = 0.2126 * R + 0.7152 * G + 0.0722 * B $$
 
 This luma coding abides to the ITU-R BT.709 standard used for HDTV<sup>[2]</sup>, which emphasis more on the green color.
@@ -122,7 +123,8 @@ For detail convolution steps, and gaussian filter processing. Please refer to fu
 > The first image is before, the second image is after. I included the photos instead because gif loses the fidelity of image, which would be hard to distinguish the sharpen filter.
 
 I picked the sharpen filter. It utilizes the same process as the matrix convolution, where the kernel is:
-$$Shapren = \begin{bmatrix} -.125 & -.125 & -.125 & -.125& -.125 \\\ -.125& .25& .25& .25& -.125 \\\ -.125& .25& 1.0& .25& -.125 \\\ -.125& .25& .25& .25& -.125 \\\ -.125& -.125& -.125& -.125& -.125\end{bmatrix}$$
+
+$$ Shapren = \begin{bmatrix} -.125 & -.125 & -.125 & -.125& -.125 \\\ -.125& .25& .25& .25& -.125 \\\ -.125& .25& 1.0& .25& -.125 \\\ -.125& .25& .25& .25& -.125 \\\ -.125& -.125& -.125& -.125& -.125\end{bmatrix} $$
 
 For detail convolution steps, and gaussian filter processing. Please refer to function `shapren` in the `filters.cpp` file.
 
@@ -136,7 +138,7 @@ After looking into the extesion options, I wanted to focus on 3 things:
 ### EXT1 - New Filter
 Sepia filter requires matrix multiplication. In general, any color transformation filter requires matrix multiplication to transform colors based on its according RGB value. The transformation matrix for Sepia is shown below:
 
-$$Sobel_{x} = \begin{bmatrix} 0.393& 0.769& 0.189\\ 0.349& 0.686& 0.168 \\ 0.272& 0.534& 0.131\end{bmatrix}$$
+$$ Sobel_{x} = \begin{bmatrix} 0.393& 0.769& 0.189 \\\ 0.349& 0.686& 0.168 \\\ 0.272& 0.534& 0.131\end{bmatrix} $$
 
 ![imgDisplay Greyscale w OpenCV](assets/report/ex1_sepia.gif)
 > The gif above shows the sepia filter in a live video feed
