@@ -12,7 +12,6 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
-#include "util.h"
 #include "filters.h"
 using namespace cv;
 using namespace std;
@@ -23,6 +22,10 @@ vector<int> getImageCompressionParam()
     compression_params.push_back(IMWRITE_PNG_COMPRESSION);
     compression_params.push_back(3);
     return compression_params;
+}
+
+bool toggleSwitch(bool predicate) {
+        return !predicate;
 }
 
 int main(int argc, char *argv[])
