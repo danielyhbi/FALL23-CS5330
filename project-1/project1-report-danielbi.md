@@ -60,7 +60,7 @@ In addition, for faster convolution processing, (2) 1x5 kernels are utilized as 
 
 $$ G_{pass1} = \begin{bmatrix} 0.1& 0.2& 0.4& 0.2& 0.1\end{bmatrix} $$
 
-$$ G_{pass2} = \begin{bmatrix} 0.1\\ 0.2\\ 0.4\\ 0.2\\ 0.1\end{bmatrix} $$
+$$ G_{pass2} = \begin{bmatrix} 0.1\\\ 0.2\\\ 0.4\\\ 0.2\\\ 0.1\end{bmatrix} $$
 
 In order to properly perserve the intemediate steps between each convolutions, a temporary `Mat` is created. Psudocode is shown below.
 ```c++
