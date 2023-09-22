@@ -1,6 +1,7 @@
 */build/*
-~/out/
 */out/
 .DS_Store
 */.DS_Store
-*/.vscode/~
+*/.vscode/*
+project-1/.DS_Store
+.DS_Store
