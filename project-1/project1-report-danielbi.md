@@ -59,6 +59,7 @@ The 5x5 gauss filter worked great on softening the edges around the fonts.
 In addition, for faster convolution processing, (2) 1x5 kernels are utilized as separable filters. Where the original 5x5 gaussian filter is separated into (2) 1x5 matrix (one vertical, one horizontal) as shown below.
 
 $$ G_{pass1} = \begin{bmatrix} 0.1& 0.2& 0.4& 0.2& 0.1\end{bmatrix} $$
+
 $$ G_{pass2} = \begin{bmatrix} 0.1\\ 0.2\\ 0.4\\ 0.2\\ 0.1\end{bmatrix} $$
 
 In order to properly perserve the intemediate steps between each convolutions, a temporary `Mat` is created. Psudocode is shown below.
@@ -78,7 +79,8 @@ Note each kernel is normalized to 1. For detail convolution steps, and gaussian 
 ![vidDisplay sobel X+Y](assets/report/7_edge_detect_both.gif)
 > The gif above shows sobel edge detection in a live video feed
 
-$$ Sobel_{x} = \begin{bmatrix} 1& 0& -1\\\ 2& 0& -2 \\\ 1& 0& -1\end{bmatrix} $$ 
+$$ Sobel_{x} = \begin{bmatrix} 1& 0& -1\\\ 2& 0& -2 \\\ 1& 0& -1\end{bmatrix} $$
+
 $$ Sobel_{x} = \begin{bmatrix} 1& 2& 1\\\ 0& 0& 0 \\\ -1& -2& -1\end{bmatrix} $$
 
 Similiar processing is utilized as the gaussian blur filter. However some difference remains:
