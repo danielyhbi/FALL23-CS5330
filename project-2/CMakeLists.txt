@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
-project(project1-danielbi)
+project(project2-danielbi)
 
 # Set c++ standard to c++11
 set (CMAKE_CXX_STANDARD 11)
 
 # output directory
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/compiled)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 
 include_directories(
     # Mac Intel
@@ -14,6 +14,9 @@ include_directories(
     # Mac M1+
     /opt/homebrew/Cellar/opencv/4.8.0_7/include/opencv4
     ../include
+
+    ${CMAKE_SOURCE_DIR}/src/features
+    ${CMAKE_SOURCE_DIR}/include
 )
 
 link_directories(
@@ -26,15 +29,23 @@ link_directories(
     /opt/homebrew/lib/
 )
 
-set(SOURCES_vid
-    vidDisplay.cpp
-    filters.cpp
+set(FEATURES
+    src/findImages.cpp
+    src/features/feature.h
+    src/features/baseline_matching.cpp
+    src/features/histogram_matching.cpp
+    src/features/multiHistMatching.cpp
+    src/features/feature.cpp
+    src/features/multiHistTextureMatch.cpp
+    src/features/custom1.cpp
+    src/features/custom2.cpp
+    src/features/custom3_roads.cpp
+    include/csv_util.h
 )
 
-add_executable(project1-danielbi-imgDisplay imgDisplay.cpp filters.cpp filterMatrices.h)
-add_executable(project1-danielbi-vidDisplay vidDisplay.cpp filters.cpp filterMatrices.h)
+add_executable(project1-danielbi-find-images ${FEATURES})
 
-target_link_libraries(project1-danielbi-imgDisplay
+target_link_libraries(project1-danielbi-find-images
     -ltiff
     -lpng
     -ljpeg
@@ -51,25 +62,6 @@ target_link_libraries(project1-danielbi-imgDisplay
     -lopencv_imgcodecs
     -lopencv_imgproc
     # -lopencv_objdetect
-)
-
-target_link_libraries(project1-danielbi-vidDisplay
-    -ltiff
-    -lpng
-    -ljpeg
-    -llapack
-    -lblas
-    -lz
-    -ljasper
-    -lwebp
-    -IlmImf
-    -lopencv_core
-    -lopencv_highgui
-    -lopencv_video
-    -lopencv_videoio
-    -lopencv_imgcodecs
-    -lopencv_imgproc
-    # lopencv_objdetect
 )
 
 link_libraries(
