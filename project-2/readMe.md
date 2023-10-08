@@ -6,9 +6,9 @@ CS5330 - Fall 2023
 
 ## Google drive link
 - Report
-   - https://github.com/danielyhbi/FALL23-CS5330/blob/dcb85cc4d4fbc7f7baf20d912b93434e79ad535b/project-1/project1-report-danielbi.md
+   - https://github.com/danielyhbi/FALL23-CS5330/blob/main/project-2/project2.md
 - CMake + makefile
-   - https://github.com/danielyhbi/FALL23-CS5330/blob/dcb85cc4d4fbc7f7baf20d912b93434e79ad535b/project-1/CMakeLists.txt
+   - https://github.com/danielyhbi/FALL23-CS5330/blob/main/project-2/CMakeLists.txt
 
 ## System environment
 - OS: Mac OS Ventura 13.5.2
