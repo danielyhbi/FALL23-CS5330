@@ -4,6 +4,8 @@ Author: Daniel Bi
 CS5330 - Fall 2023
 10/6/2023
 
+Report link: https://github.com/danielyhbi/FALL23-CS5330/blob/main/project-2/project2.md
+
 ## Introduction
 This package includes demostration of Content-Based Image Retrieval (CBIR) using the following methods: 
 - Baseline Matching
@@ -33,10 +35,7 @@ after establishing a baseline, for each image in the file. A feature vector for 
 
 Below on the most left is the original image. and the rest are ranked with similar images.
 
-![OG image "1016.jpg"](examples/olympus/pic.1016.jpg)
-![#1 image "0326.jpg"](examples/olympus/pic.0326.jpg)
-![#2 image "0986.jpg"](examples/olympus/pic.0986.jpg)
-![#3 image "0339.jpg"](examples/olympus/pic.0339.jpg)
+![OG image "1016.jpg"](examples/reports/baseline_CBIR.png)
 
 The result makes sense.. if you just look into the central 9 pixels (which is a tiny amount of area). So yeah, although it might not be overall sound, but the process is correct. Time to move on to more sophisticated methods.
 
@@ -53,10 +52,7 @@ intersection += min(origVector, compareVector)
 
 The results are shown below:
 
-![OG image "0164.jpg"](examples/olympus/pic.0164.jpg)
-![#1 image "0080.jpg"](examples/olympus/pic.0080.jpg)
-![#2 image "0110.jpg"](examples/olympus/pic.0110.jpg)
-![#3 image "0426.jpg"](examples/olympus/pic.0426.jpg)
+![OG image "0164.jpg"](examples/reports/histogram_CBIR.png)
 
 The matching results are quite good. The top 3 similar images all contain (mostly) a large portion of the blue sky and some white objects.
 
@@ -72,10 +68,7 @@ Could having more histograms work in our favor? How about dividing the image int
 
 In the file `multiHistMatching.cpp`, I generated (4) feature vectors based on the (4) histogram that I created. The results are below:
 
-![OG image "0164.jpg"](examples/olympus/pic.0164.jpg)
-![#1 image "0110.jpg"](examples/olympus/pic.0110.jpg)
-![#2 image "0426.jpg"](examples/olympus/pic.0426.jpg)
-![#3 image "0907.jpg"](examples/olympus/pic.0907.jpg)
+![OG image "0164.jpg"](examples/reports/multi_hist_CBIR.png)
 
 The results were better, but not great.. Here is a table of the distance score for each run:
 
@@ -104,19 +97,13 @@ Per homework instruction, the scores for each feature vector are weighted equall
 
 Results are below. This time is shows the image match for `0164.jpg`.
 
-![OG image "0164.jpg"](examples/olympus/pic.0164.jpg)
-![#1 image "0080.jpg"](examples/olympus/pic.0080.jpg)
-![#2 image "1032.jpg"](examples/olympus/pic.1032.jpg)
-![#3 image "0556.jpg"](examples/olympus/pic.0556.jpg)
+![OG image "0164.jpg"](examples/reports/texture_less_CBIR.png)
 
 The result is also not great. I see the scores getting higher (not sure what `0556.jpg` is doing here). I noticed the original image doesn't have that much of a defined edge (as a whole image) which contributes to why the texture is working less effectively.. However, I can see a big room for improvements if I divide up the image (similar to section 3), and do histogram + texture for (4) parts.
 
 Let's try an image with a more defined texture (and uniform). Here are similar images for image `0274.jpg`.
 
-![OG image "0274.jpg"](examples/olympus/pic.0274.jpg)
-![#1 image "0825.jpg"](examples/olympus/pic.0825.jpg)
-![#2 image "0273.jpg"](examples/olympus/pic.0273.jpg)
-![#3 image "0275.jpg"](examples/olympus/pic.0275.jpg)
+![OG image "0274.jpg"](examples/reports/texture_CBIR.png)
 
 The result is much better! (with a texture-heavy photo). Not only the sky and trees are correctly captured, you can also see the water towers are correctly identified. Pew, I thought my code was wrong!
 
@@ -146,7 +133,7 @@ The general process is as follows:
 
 Per homework instruction, I picked this image to represent the most "American Lawn". Although the sports aren't quite American..
 
-![OG image "0413.jpg"](examples/olympus/pic.0413.jpg)
+![OG image "0413.jpg"](examples/reports/pic.0413.jpg)
 
 |Histogram|Start Row| End Row | Start Col | End Col |
 |-|-|-|-|-|
@@ -174,7 +161,7 @@ For detailed implementation, please refer to `custom1_grass.cpp`.
 
 I picked this image to represent the most "road". No particular reasons, I just like this image.
 
-![OG image "0824.jpg"](examples/olympus/pic.0824.jpg)
+![OG image "0824.jpg"](examples/reports/pic.0824.jpg)
 
 |Histogram|Start Row| End Row | Start Col | End Col |
 |-|-|-|-|-|
@@ -266,10 +253,10 @@ I definitely learned so much on this project. I learned how a histogram works (f
 
 I also learned the limitations of using histograms. It tells us the quantity, rather than preserving significant location data of the image. It is quite unfortunate that I ran out of time on this one.. I'm excited to see what future projects are like!
 
-openCv.org
-geeksforgeeks.org
-stackoverFlow.com
-https://medium.com/smucs/image-processing-algorithms-canny-edge-detector-58cd6e50477d
+- openCv.org
+- geeksforgeeks.org
+- stackoverFlow.com
+- https://medium.com/smucs/image-processing-algorithms-canny-edge-detector-58cd6e50477d
 
 
 
