@@ -1,1 +1,9 @@
+*/build/*
+*/out/
+.DS_Store
+*/.DS_Store
+*/.vscode/*
+.DS_Store
+/examples-copy/*
+/.idea/*
 */examples

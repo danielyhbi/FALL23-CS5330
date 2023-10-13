@@ -6,11 +6,7 @@ CS5330 - Fall 2023
 
 ## Google drive link
 - Report
-<<<<<<< Updated upstream
    - https://github.com/danielyhbi/FALL23-CS5330/blob/main/project-2/project2.md
-=======
-   - https://github.com/danielyhbi/FALL23-CS5330/blob/main/project-2/project2.md 
->>>>>>> Stashed changes
 - CMake + makefile
    - https://github.com/danielyhbi/FALL23-CS5330/blob/main/project-2/CMakeLists.txt
 
