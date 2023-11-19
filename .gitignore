@@ -8,3 +8,5 @@ project-1/.DS_Store
 **/.idea/
 *.zip
 */examples
+**/eignimages/*
+/playground/*
