@@ -2,7 +2,7 @@
     Daniel Bi
     Fall 2023
     CS 5330
-    vidDisplay.cpp (main file)
+    (main file)
 */
 
 #include <opencv2/core.hpp>
@@ -18,11 +18,12 @@
 using namespace cv;
 using namespace std;
 
-int printUWLogo(vector<Point3f> &points3D)
+// prints out a UW logo that has 1 layer with specified altitude
+int printUWLogo(vector<Point3f> &points3D, int altitude)
 {
 
-    points3D.clear();
-    int altitude = 2;
+    // points3D.clear();
+    // int altitude = 2;
 
     points3D.push_back(Point3f(0, 0, altitude));
     points3D.push_back(Point3f(3, 0, altitude));
@@ -50,6 +51,7 @@ int printUWLogo(vector<Point3f> &points3D)
     return 0;
 }
 
+// project an 2D image on a 3D frame
 int projectPointsToFrame(vector<Point3f> &points3D, Mat &photo, cv::Scalar &color, Mat &frame, Mat &rots, Mat &trans, Mat &cam, Mat &distort)
 {
 
@@ -88,6 +90,7 @@ int projectPointsToFrame(vector<Point3f> &points3D, Mat &photo, cv::Scalar &colo
     return 0;
 }
 
+// project points into a line, then onto a 3D frame with camera parmeters
 int projectLinesToFrame(vector<Point3f> &points3D, cv::Scalar &color, Mat &frame, Mat &rots, Mat &trans, Mat &cam, Mat &distort)
 {
 
@@ -101,13 +104,16 @@ int projectLinesToFrame(vector<Point3f> &points3D, cv::Scalar &color, Mat &frame
         cv::line(frame, cv::Point(imagePoints2D[i].x, imagePoints2D[i].y), cv::Point(imagePoints2D[i + 1].x, imagePoints2D[i + 1].y), color, 2);
     }
 
+    // drawing lines to connect the two layers
+    int mid = imagePoints2D.size() / 2; //22
+    for (size_t i = 0; i < imagePoints2D.size() / 2; i++) {
+        // connect between the two layers
+        cv::line(frame, cv::Point(imagePoints2D[i].x, imagePoints2D[i].y), cv::Point(imagePoints2D[i + mid].x, imagePoints2D[i + mid].y), color, 2);
+    }
+
     // Draw the last line connecting the last and first points (for a closed shape)
     cv::line(frame, cv::Point(imagePoints2D.back().x, imagePoints2D.back().y), cv::Point(imagePoints2D.front().x, imagePoints2D.front().y), color, 2);
 
-    return 0;
-}
-
-int overlayImage(vector<Point3f> &points3D, cv::Scalar &color, Mat &photo, Mat &frame, Mat &rots, Mat &trans, Mat &cam, Mat &distort) {
     return 0;
 }
 
@@ -220,7 +226,8 @@ int main(int argc, char *argv[])
 
                 vector<Point3f> uOfW;
                 cv::Scalar purple(57, 39, 91);
-                printUWLogo(uOfW);
+                printUWLogo(uOfW, 2);
+                printUWLogo(uOfW, 5);
                 projectLinesToFrame(uOfW, purple, frame, rotations, translations, cameraMatrix, distortionCoefficients);
 
                 // overlay husky stadium
