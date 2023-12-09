@@ -14,7 +14,7 @@ include_directories(
     # /usr/local/include/opencv4
     
     # Mac M1+
-    /opt/homebrew/Cellar/opencv/4.8.1_1/include/opencv4
+    /opt/homebrew/Cellar/opencv/4.8.1_4/include/opencv4
     ../include
 
     ${CMAKE_SOURCE_DIR}/src/features
@@ -28,7 +28,7 @@ link_directories(
     # /usr/local/lib/
 
     # Mac M1+
-    /opt/homebrew/Cellar/opencv/4.8.1_1/lib/opencv4/3rdparty
+    /opt/homebrew/Cellar/opencv/4.8.1_4/lib/opencv4/3rdparty
     /opt/homebrew/lib/
 )
 

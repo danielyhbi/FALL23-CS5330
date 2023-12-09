@@ -2,7 +2,7 @@
     Daniel Bi
     Fall 2023
     CS 5330
-    vidDisplay.cpp (main file)
+    (file for harris corner detection)
 */
 
 #include <opencv2/core.hpp>
