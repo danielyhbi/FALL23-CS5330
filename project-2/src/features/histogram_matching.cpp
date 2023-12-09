@@ -1,13 +1,16 @@
 /*
-Feature: Histogram matching
+    Daniel Bi
+    CS5530 Computer Vision -HW2
 
-Funciton: use the 9x9 square in the middle of the image as a feature vector
+    Feature: Histogram matching
+    Funciton: matching images with a single histogram
 */
 #include "feature.h"
 
 using namespace cv;
 using namespace std;
 
+// This class implements the `Feature` object which includes getting the feature vector and ways to compare the feature vector(s)
 class HistogramMatchingFeature : public Feature
 {
 public:
@@ -34,7 +37,7 @@ public:
     int getHistogram(Mat &src, std::vector<std::vector<float>> &histogram)
     {
 
-        const int histsize = 256;
+        const int histsize = 16;
         int max = 0;
 
         // std::vector<std::vector<float>> histogram(histsize, std::vector<float>(histsize, 0));
@@ -64,12 +67,12 @@ public:
                 int gIndex = (int)(g * (histsize - 1) + 0.5);
 
                 // increment the histogram
-                histogram[rIndex][gIndex]++;
+                histogram[rIndex][gIndex] += 1;
 
                 float newValue = histogram[rIndex][gIndex];
 
                 // conditional assignemnt
-                max = newValue > max ? newValue : max;
+                // max = newValue > max ? newValue : max;
             }
         }
 

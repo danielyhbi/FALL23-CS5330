@@ -1,5 +1,8 @@
 /*
-Feature: Histogram matching - Find Grass lawn
+    Daniel Bi
+    CS5530 Computer Vision -HW2
+
+    Feature: Histogram matching - Find Grass lawn
 */
 #include <future>
 #include "feature.h"
@@ -7,9 +10,11 @@ Feature: Histogram matching - Find Grass lawn
 using namespace cv;
 using namespace std;
 
+// This class implements the `Feature` object which includes getting the feature vector and ways to compare the feature vector(s)
 class FindGrassMatching : public Feature
 {
 public:
+    // the feature vector includes calcuating image histogram and sobel edge magnitude/orientation for texture
     int getFeatureVector(Mat &image, vector<vector<float>> &output) override
     {
         std::vector<std::vector<float>> histResult;
@@ -80,23 +85,6 @@ public:
                 histogram[rIndex][gIndex]++;
 
                 float newValue = histogram[rIndex][gIndex];
-
-                // if (R > 210 && G > 210 && B < 100 && G < 230) {
-                //     R /= scale;
-                //     G /= scale;
-                // } else {
-                //     continue;
-                // }
-
-                // compute indexes, r, g are in [0, 1]
-                // int rIndex = (int)(r * (histsize - 1) + 0.5); // rounds to the neatest value
-                // int gIndex = (int)(g * (histsize - 1) + 0.5);
-
-                // // increment the histogram
-                // histogram[R][G]++;
-
-                // float newValue = histogram[R][G];
-
                 // conditional assignemnt
                 max = newValue > max ? newValue : max;
             }
@@ -210,6 +198,7 @@ public:
         return totalScore;
     }
 
+// private helper method obtained from hw1
 private:
     // normalized from {1, 2, 1}
     const std::vector<std::vector<double>> SOBEL_KERNEL_1DX_V = {{0.25}, {0.5}, {0.25}};
