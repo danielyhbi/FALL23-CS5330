@@ -1,16 +1,20 @@
 /*
-Feature: Facial Matching
-*/
+    Daniel Bi
+    CS5530 Computer Vision -HW2
 
+    Feature: Facial Matching
+*/
 #include <future>
 #include "feature.h"
 
 using namespace cv;
 using namespace std;
 
+// This class implements the `Feature` object which includes getting the feature vector and ways to compare the feature vector(s)
 class FindFaceMatching : public Feature
 {
 public:
+    // the feature vector includes calcuating image histogram and sobel edge magnitude/orientation for texture
     int getFeatureVector(Mat &image, vector<vector<float>> &output) override
     {
         std::vector<std::vector<float>> histResult;

@@ -1,8 +1,10 @@
 /*
+    Daniel Bi
+    CS5530 Computer Vision -HW2
+
     This is the main entry point of the code.
     Given in image. it will find similar images within the database
 */
-
 #include <string>
 #include <vector>
 #include <filesystem>
@@ -25,7 +27,7 @@ using namespace std;
 int main()
 {
 
-    string image_path = "/Users/danielbi/git-repo/FALL23-CS5330/project-2/examples/olympus/pic.0607.jpg";
+    string image_path = "/Users/danielbi/git-repo/FALL23-CS5330/project-2/examples/olympus/pic.0535.jpg";
 
     Mat img = imread(image_path, IMREAD_COLOR);
     int imgSize = img.rows * img.cols;
@@ -34,12 +36,12 @@ int main()
 
     // BaselineMatchingFeature baselineMatching; //1016
 
-    // HistogramMatchingFeature histogramMatching;
-    // MultiHistMatchingFeature histogramMatching;
-    // TextureHistogramMatchingFeature histogramMatching;
+    // HistogramMatchingFeature histogramMatching; // 0164
+    // MultiHistMatchingFeature histogramMatching; //0274
+    TextureHistogramMatchingFeature histogramMatching; // 0535
     // FindRoadMatching histogramMatching;  //0824
     // FindGrassMatching histogramMatching; //0413
-    FindFaceMatching histogramMatching; // 0607
+    // FindFaceMatching histogramMatching; // 0607
 
     std::map<float, string, std::greater<float>> simImages;
     vector<vector<float>> baselineVector;

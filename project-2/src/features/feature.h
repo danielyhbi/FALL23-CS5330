@@ -2,7 +2,6 @@
 
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
-//#include <opencv2/highgui.hpp>
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <string>
@@ -12,7 +11,11 @@
 using namespace cv;
 using namespace std;
 
-
+/*
+    Abstract class that defines a feature for image regocnition.
+    `getFeatureVector` should implement a way to obtain a feature from an iamge
+    `compare` should implement a way to compare the feature vectors from two different images with custom distance metrics
+*/
 class Feature {
     public:
         // each children class will define their own feature vector

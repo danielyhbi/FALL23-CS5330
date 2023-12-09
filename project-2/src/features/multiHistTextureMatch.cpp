@@ -1,7 +1,9 @@
 /*
-Feature: Histogram matching
+    Daniel Bi
+    CS5530 Computer Vision -HW2
 
-Funciton: use the 9x9 square in the middle of the image as a feature vector
+    Feature: Histogram + Texture matching
+    Funciton: matching images with multiple histograms and Sobel edge filters for textures. (4) for each corners of the image.
 */
 #include <future>
 #include "feature.h"
@@ -9,6 +11,7 @@ Funciton: use the 9x9 square in the middle of the image as a feature vector
 using namespace cv;
 using namespace std;
 
+// This class implements the `Feature` object which includes getting the feature vector and ways to compare the feature vector(s)
 class TextureHistogramMatchingFeature : public Feature
 {
 public:
@@ -50,7 +53,7 @@ public:
     int getHistogram(Mat &src, std::vector<std::vector<float>> &histogram)
     {
 
-        const int histsize = 128;
+        const int histsize = 64;
         int max = 0;
 
         // std::vector<std::vector<float>> histogram(histsize, std::vector<float>(histsize, 0));

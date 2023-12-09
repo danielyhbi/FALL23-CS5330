@@ -1,5 +1,9 @@
 /*
-Feature: Histogram matching - Find Road
+    Daniel Bi
+    CS5530 Computer Vision -HW2
+
+    Feature: Histogram matching - Find Road
+    Modifies the existing texture+histogram filters
 */
 #include <future>
 #include "feature.h"
@@ -7,6 +11,7 @@ Feature: Histogram matching - Find Road
 using namespace cv;
 using namespace std;
 
+// This class implements the `Feature` object which includes getting the feature vector and ways to compare the feature vector(s)
 class FindRoadMatching : public Feature
 {
 public:

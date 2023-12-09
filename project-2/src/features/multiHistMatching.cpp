@@ -1,13 +1,16 @@
 /*
-Feature: Histogram matching
+    Daniel Bi
+    CS5530 Computer Vision -HW2
 
-Funciton: use the 9x9 square in the middle of the image as a feature vector
+    Feature: Histogram matching
+    Funciton: matching images with multiple histograms. (4) for each corners of the image.
 */
 #include "feature.h"
 
 using namespace cv;
 using namespace std;
 
+// This class implements the `Feature` object which includes getting the feature vector and ways to compare the feature vector(s)
 class MultiHistMatchingFeature : public Feature
 {
 public:
@@ -100,7 +103,7 @@ private:
     vector<vector<float>> getHistogramHelper(Mat &src, int startRow, int endRow, int startCol, int endCol)
     {
 
-        const int histsize = 256;
+        const int histsize = 16;
         int max = 0;
 
         // initialize the matrix
